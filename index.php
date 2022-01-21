@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <title>Rojgar </title>
 </head>
 
 <body>
-    <h1> Job Portal </h1>
+    <div class="container">
+        <?php include 'nav-bar.php' ?>
+        <div class="heading">
+            <h4>Hire <i>freelancers</i> for any job, online.</h4>
+            <div class="button-area">
+                <button class="hire-button">Hire a Freelancer</button>
+                <button class="work-button">Work as Freelancer</button>
+            </div>
+        </div>
 </body>
+<script>
+    var join = document.querySelector(".join-tag");
+    join.addEventListener('click', popup())
+
+    function popup(e) {
+        popupContetnt = "";
+    }
+</script>
 
 </html>
