@@ -6,6 +6,7 @@
 }
 body {
   background-color: #010150;
+  color: white;
 }
 .join-button {
   border: 1px solid white;
@@ -66,7 +67,6 @@ a {
 }
 input[type="text"] {
   margin-top: 10px;
-  width: 100%;
   padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -97,4 +97,20 @@ input[type="text"] {
 
 .work-button:hover {
   background-color: #ffffff21;
+}
+.content {
+  margin-left: 25px;
+}
+input[type="submit"] {
+  padding: 8px;
+  margin: 5px;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+input[type="submit"]:hover {
+  background-color: #cc062d;
+  border: 1px solid #b91334;
+  color: white;
 }
