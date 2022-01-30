@@ -5,17 +5,17 @@
   box-sizing: border-box;
 }
 body {
-  background-color: rgb(7, 7, 170);
+  background-color: #010150;
 }
 .join-button {
   border: 1px solid white;
   padding: 3px 10px !important;
   margin-top: -5px;
-  border-radius: 10%;
+  border-radius: 5px;
 }
 .join-button:hover {
-  background-color: crimson;
-  border: 1px solid crimson;
+  background-color: #cc062d;
+  border: 1px solid #b91334;
 }
 
 a {
@@ -33,7 +33,7 @@ a {
   margin-top: 15px;
 }
 .title {
-  color: white;
+  color: #dd0732;
   font-weight: 600;
   font-size: 1em;
 }
@@ -77,7 +77,8 @@ input[type="text"] {
 }
 .hire-button,
 .work-button {
-  background-color: crimson;
+  background-color: #ff0033;
+  color: white;
   margin-top: 10px;
   padding: 20px;
   outline: none;
@@ -87,9 +88,13 @@ input[type="text"] {
   cursor: pointer;
 }
 .work-button {
-  background-color: #dc143ce3;
+  background-color: transparent;
+  border: 1px white solid;
 }
-.hire-button:hover,
+.hire-button:hover {
+  background-color: #a00423;
+}
+
 .work-button:hover {
-  background-color: #dc143ce3;
+  background-color: #ffffff21;
 }
