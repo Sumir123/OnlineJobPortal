@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     if ($confirmPassword == "") {
         $err_confirmPassword = "Confirm password";
     }
-    if ($userPassword == $confirmPassword) { //put elseif for validation 
+    if ($userPassword == $confirmPassword) { //put if to skip validation   
         header("Location: ./overview.php");
         exit();
     } else {

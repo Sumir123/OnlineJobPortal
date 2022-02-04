@@ -20,8 +20,7 @@ if (isset($_POST['submit'])) {
     }
     if ($confirmPassword == "") {
         $err_confirmPassword = "Confirm password";
-    }
-    if ($comapnyPassword == $confirmPassword) { //put elseif for validation 
+    } elseif ($comapnyPassword == $confirmPassword) { //put if to skip validation   
         header("Location: ./overview.php");
         exit();
     } else {
