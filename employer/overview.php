@@ -23,5 +23,15 @@
             </ul>
         </div>
     </div>
-    <div class="container half center">
+    <div class="row info">
+        <div class="container half mr-5">
+
+            <img src="" alt="Profile picture">
+        </div>
+        <div class="container half">
+
+            Company Name:aaaaaaaaaaaaaaa
+            Email:aaaaaaaaaaaa@aaaaaa.com<br>
+            Phone number:aaaaaaaaaaaaaaa
+        </div>
     </div>

@@ -60,10 +60,13 @@ a {
   display: flex;
 }
 .half {
-  width: 50%;
+  width: 50% !important;
 }
 .center {
   margin: 0px auto;
+}
+.mr-5 {
+  margin-right: 1rem !important;
 }
 .container {
   width: 90%;
