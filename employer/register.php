@@ -20,7 +20,8 @@ if (isset($_POST['submit'])) {
     }
     if ($confirmPassword == "") {
         $err_confirmPassword = "Confirm password";
-    } elseif ($comapnyPassword == $confirmPassword) { //put if to skip validation   
+    }
+    if ($comapnyPassword == $confirmPassword) { //put if to skip validation   
         header("Location: ./overview.php");
         exit();
     } else {
@@ -113,7 +114,7 @@ if (isset($_POST['submit'])) {
 
                         ?>
                     </span>
-                    <p class="dim"> Minimum eight characters, at least one upper and lowercase letters and one digit</p><br>
+                    <p class="dim"> Minimum eight characters, at least one upper and lowercase letters and one digit</p>
 
                 </div>
 

@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
             </ul>
         </div>
     </div>
-    <div class="container">
+    <div class="row container ">
         <h2 style="margin-bottom:0.5em ;">Create your free Freelancer Account</h2>
         <p class="dim" style="margin-bottom:1em ;"> Fill the basic information and start recruiting now!</p>
         <div class="form-container ">
@@ -114,7 +114,7 @@ if (isset($_POST['submit'])) {
 
                         ?>
                     </span>
-                    <p class="dim"> Minimum eight characters, at least one upper and lowercase letters and one digit</p><br>
+                    <p class="dim"> Minimum eight characters, at least one upper and lowercase letters and one digit</p>
 
                 </div>
 
