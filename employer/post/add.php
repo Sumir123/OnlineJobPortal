@@ -19,7 +19,7 @@
             <ul class="nav-list">
                 <li class="nav-items"><a class="link" href="">Find freelancer </a></li>
                 <li class="nav-items"><a class="link" href="">My Jobs </a></li>
-                <li class="nav-items "><a class="link" href=""> Profile </a></li>
+                <li class="nav-items "><a class="link" href="../overview.php"> Profile </a></li>
             </ul>
         </div>
     </div>
@@ -28,14 +28,14 @@
         <div class="form-container ">
             <form method="POST">
                 <div class="form-input">
-                    <label for="cName">Job Post Title:</label>
+                    <label for="cName" class="label">Choose a name for your project:</label>
                     <input type="text" name="cName" placeholder="Enter the Job position" id="cName" autocomplete="off">
                     <span>
                     </span><br>
                 </div>
                 <div class="form-input">
-                    <label for="cEmail">Job post Description:</label>
-                    <input type="number" name="cEmail" placeholder="Enter Job details" id="cEmail" autocomplete="off">
+                    <label for="cEmail">Job post Description:</label><br>
+                    <textarea name="jobDescription" rows="4" cols="50" placeholder="Tell us more about your job" style="resize: none;"></textarea>
                     <span>
                     </span><br>
                 </div>
@@ -45,6 +45,12 @@
                     <span>
                     </span><br>
                 </div>
+                <!-- <div class="form-input">
+                    <input type="file">
+                    <small> upload any images or documents that might be helpful <br>in explaining your brief here (Max file size: 25 MB).
+                        <span> </small>
+                    </span><br>
+                </div> -->
                 <div class="form-input">
                     <button class="form-button" type="submit" name="Post"> POST </button>
                 </div>

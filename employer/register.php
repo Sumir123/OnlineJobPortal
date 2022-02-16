@@ -1,35 +1,30 @@
 <?php
-$err_msg = $status = $err_cName = $err_cEmail =  $err_cPhone =  $err_cPassword = $err_confirmPassword = "";
+if (isset($_COOKIE["log_info"])) {
+    header("Location:./overview.php?employer_id=" . $_COOKIE['log_info']);
+}
+include("../db_connect.php");
+$err_msg = $validation = $status = $err_cName = $err_cEmail =  $err_cPhone =  $err_cPassword = $err_confirmPassword = "";
 if (isset($_POST['submit'])) {
     $comapnyName = $_POST["cName"];
     $comapnyEmail = $_POST["cEmail"];
     $comapnyPhone = $_POST["cPhone"];
     $comapnyPassword = $_POST["cPassword"];
     $confirmPassword = $_POST["confirmPassword"];
-    if ($comapnyName == "") {
-        $err_cName = true;
-    }
-    if ($comapnyEmail == "" || !filter_input(INPUT_POST, "cEmail", FILTER_VALIDATE_EMAIL)) {
-        $err_cEmail = "Invalid Email format";
-    }
-    if ($comapnyPhone == "" || !preg_match("/^[0-9]/", $comapnyPhone) || !preg_match("/^98[0-9]{8}$/", $comapnyPhone)) {
-        $err_cPhone = "Invalid phone number";
-    }
-    if ($comapnyPassword == "" || !preg_match("/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}/", $comapnyPassword)) {
-        $err_cPassword = "Not Strong password";
-    }
-    if ($confirmPassword == "") {
-        $err_confirmPassword = "Confirm password";
-    }
-    if ($comapnyPassword == $confirmPassword) { //put if to skip validation   
-        header("Location: ./overview.php");
-        exit();
-    } else {
-        $err_cPassword = "Password don't match";
-        $err_confirmPassword = "Password don't match";
-        $status = "Login Failed";
+
+    include("./validate.php");
+    if ($validation == "confirm") {
+
+        $has_pass = password_hash($comapnyPassword, PASSWORD_DEFAULT); //for log in if (password_verify('rasmuslerdorf', $hash)) 
+        $sql = "INSERT INTO employer_info (`name`, `email`, `phone`, `password`) VALUES ('$comapnyName','$comapnyEmail','$comapnyPhone','$has_pass')";
+        $res = mysqli_query($conn, $sql);
+        if (!$res) {
+            $status = mysqli_error($conn);
+        } else {
+            header("Location:./login.php");
+        }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,7 +48,12 @@ if (isset($_POST['submit'])) {
             <ul class="nav-list">
                 <li class="nav-items"><a href="">Explore </a></li>
                 <li class="nav-items"><a href="">Browse Jobs </a></li>
-                <li class="nav-items join-button"><a href="">Find work </a></li>
+                <li class="nav-items ">
+                    <p class="link ">Log In <i class="fa-solid fa-down"></i></p>
+                    <ul>
+                        <li><a href="./login.php" class="link ">Employer</a></li>
+                        <li><a href="" class="link "> Job seeker </a></li>
+                </li>
             </ul>
         </div>
     </div>
@@ -63,21 +63,21 @@ if (isset($_POST['submit'])) {
         <div class="form-container ">
             <form method="POST">
                 <div class="form-input">
-                    <label for="cName">Company Name:</label>
+                    <label for="cName">Employer Name(Display name):</label>
                     <input <?php if ($err_cName) {
                                 echo 'style="border: 1px solid red;"';
                             }
-                            ?> type="text" name="cName" placeholder="Enter the name of your company" id="cName" autocomplete="off">
+                            ?> type="text" name="cName" placeholder="Enter the name of employer" id="cName" autocomplete="on">
                     <span>
 
                     </span><br>
                 </div>
                 <div class="form-input">
-                    <label for="cEmail">Official Email:</label>
+                    <label for="cEmail">Email:</label>
                     <input <?php if ($err_cEmail) {
                                 echo 'style="border: 1px solid red;"';
                             }
-                            ?> type="text" name="cEmail" placeholder="Enter the official email of the company" id="cEmail" autocomplete="off">
+                            ?> type="text" name="cEmail" placeholder="Enter the email" id="cEmail" autocomplete="on">
                     <span>
                         <?php if ($err_cEmail) {
                             echo "<span style='color:red;'> $err_cEmail </span>";
@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
                     <input <?php if ($err_cPhone) {
                                 echo 'style="border: 1px solid red;"';
                             }
-                            ?> type="text" name="cPhone" placeholder="Enter the company contact number" id="cPhone" autocomplete="off">
+                            ?> type="text" name="cPhone" placeholder="Enter the contact number" id="cPhone" autocomplete="on">
                     <span>
                         <?php if ($err_cPhone) {
                             echo "<span style='color:red;'> $err_cPhone </span>";
@@ -114,7 +114,7 @@ if (isset($_POST['submit'])) {
 
                         ?>
                     </span>
-                    <p class="dim"> Minimum eight characters, at least one upper and lowercase letters and one digit</p>
+                    <p class="dim"> Minimum six characters<br> at least one upper and lowercase letters <br> One digit</p>
 
                 </div>
 
