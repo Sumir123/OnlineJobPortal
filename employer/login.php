@@ -17,7 +17,6 @@ if (isset($_POST['login'])) {
         $validation = "confirm";
     }
     if ($validation == "confirm") {
-
         //for log in if (password_verify('rasmuslerdorf', $hash)) 
         $sql = "SELECT `employer_id`,`email`, `password` FROM `employer_info` WHERE `email`='$comapnyEmail'";
         $res = mysqli_query($conn, $sql);
@@ -32,7 +31,6 @@ if (isset($_POST['login'])) {
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +49,6 @@ if (isset($_POST['login'])) {
         <div class="title">
             <a href="../index.php" class="link">rojgar</a>
         </div>
-
         <div class="nav-bar-list">
             <ul class="nav-list">
                 <li class="nav-items"><a href="">Explore </a></li>
@@ -88,6 +85,9 @@ if (isset($_POST['login'])) {
                         echo "<span style='color:red;'> $err_cPassword </span>";
                         ?>
                     </span>
+                </div>
+                <div class="form-input">
+                    <a href="./register.php" class="">Register</a>
                 </div>
 
                 <div class="form-input">

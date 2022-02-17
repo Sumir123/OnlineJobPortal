@@ -134,12 +134,11 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-input">
-                    <?php echo "$status" ?>
-                </div>
+                    <p style="color: red;"> <?php echo "$status" ?></p </div>
 
-                <div class="form-input">
-                    <button class="form-button" type="submit" name="submit"> Register </button>
-                </div>
+                    <div class="form-input">
+                        <button class="form-button" type="submit" name="submit"> Register </button>
+                    </div>
             </form>
 
         </div>
