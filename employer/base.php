@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./employer/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,500&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
@@ -19,21 +19,24 @@
         <nav class="nav_bar">
 
             <div class="title">
-                <a href="#" class="link">rojgar</a>
+                <a href="./home.php" class="link">rojgar</a>
             </div>
             <div class="">
-                <form class="relative mr-20">
+                <form class="relative ">
                     <input class="search_input" type="text" placeholder="Search job titles">
                     <button class="icon_button"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
             <ul class="nav-list">
-                <li class="nav-items "><a href="" class="link ">Explore </a></li>
-                <li class="nav-items "><a href="./employer/projects.php" class="link ">Browse Jobs </a></li>
+                <li class="nav-items "><a href="./projects.php" class="link ">Browse Jobs </a></li>
+                <?php if (isset($_SESSION['employer_id'])) { ?>
+                    <li class="nav-items "><a href="./myproject.php" class="link ">My Jobs </a></li>
+                    <li class="nav-items "><a href="./post_add.php" class="link ">Add Jobs </a></li>
+                <?php } ?>
                 <?php if (!isset($_SESSION['employer_id'])) { ?>
                     <li class="nav-items"> <a href="#" class="link ">Log In</a>
                         <ul>
-                            <li><a href="./employer/login.php" class="link ">Employer</a></li>
+                            <li><a href="./login.php" class="link ">Employer</a></li>
                             <li><a href="" class="link "> Job seeker </a></li>
                         </ul>
                     </li>
@@ -45,7 +48,10 @@
                     </li>
             </ul>
         <?php } else { ?>
-            <li class="nav-items"> <a name="signout_button" href="./scripts/session.php" class="link ">Log Out</a>
+            <li class="nav-items">
+                <form action="./scripts/session.php"> <button onClick="javascript: 
+                        return confirm('Please confirm Signout:');
+                        " name="signout_button" href="./scripts/session.php" class="a">Log Out</button></form>
                 </ul>
             <?php } ?>
             <?php if (isset($_SESSION['employer_id'])) { ?>
@@ -57,30 +63,8 @@
                     <div class="icon_container"> <i class="fa-solid fa-bell"></i></div>
                 </div>
                 <div class="nav_container">
-                    <img class="image_round" src="./Images/pp.jpg">
+                    <a href="./overview.php"> <img class="image_round" src="./Images/pp.jpg"></a>
                 </div>
             <?php } ?>
         </nav>
     </div>
-    <div class="">
-        <div class="body row center">
-            <div class="quote">
-                <div>
-                    <h4>Hire <i>freelancers</i> for any job,<br> online.</h4>
-
-                </div>
-
-                <div class="button-area">
-                    <a class="button hire-button" href="./employer/register.php">Hire a Freelancer</a>
-                    <a class="button work-button" href="./freelancer/register.php">Work as Freelancer</a>
-                </div>
-            </div>
-            <div class="">
-                <img class="" src="./employer/Images/work.png" height="500px">
-
-            </div>
-        </div>
-        <?php include "footer.php" ?>
-</body>
-
-</html>

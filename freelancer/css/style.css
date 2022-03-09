@@ -23,6 +23,7 @@ a {
 .title {
   font-size: 1.7em;
   width: 50%;
+  margin-left: 4rem;
 }
 .nav-bar-list {
   width: 60%;
@@ -67,7 +68,7 @@ div ul li:hover > ul {
 }
 .link {
   color: purple;
-  font-weight: 600;
+  font-weight: 300;
 }
 .link:hover {
   color: black;
@@ -88,7 +89,7 @@ div ul li:hover > ul {
   background: none;
   font-size: 1rem;
   color: purple;
-  font-weight: 600;
+  font-weight: 300;
   cursor: pointer;
 }
 .button-2:hover {
@@ -241,7 +242,7 @@ hr {
   display: block;
 }
 label {
-  font-weight: 600;
+  font-weight: 300;
   font-size: 1.1rem;
 }
 input[type="file"] {
@@ -268,8 +269,9 @@ input[type="file"] {
   padding-bottom: 0.5rem;
 }
 .heading {
-  padding-bottom: 1.3rem;
+  padding-bottom: 0.9rem;
 }
+
 @media only screen and (max-width: 600px) {
   div ul ul {
     position: absolute;
@@ -283,10 +285,7 @@ input[type="file"] {
   .nav-bar {
     gap: 1rem;
   }
-  .title {
-    font-size: 1.7em;
-    width: 40%;
-  }
+
   .nav-bar-list {
     font-size: 1rem;
     width: 85%;
@@ -350,9 +349,7 @@ input[type="file"] {
   .nav-bar {
     gap: 1rem;
   }
-  .title {
-    font-size: 1.7em;
-  }
+
   .nav-bar-list {
     font-size: 1rem;
     width: fit-content;

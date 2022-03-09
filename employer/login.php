@@ -1,102 +1,114 @@
 <?php
 
-if (isset($_COOKIE["log_info"])) {
-    header("Location:./overview.php");
-    // header("Location:./overview.php?employer_id=" . $_COOKIE['log_info']);
+$log_error = "";
+if (isset($_GET["login"])) {
+    $log_error = $_GET["login"];
 }
-include("../db_connect.php");
-$err_msg = $status = $err_cEmail =  $err_cPassword = $validation  = "";
-if (isset($_POST['login'])) {
-    $comapnyEmail = $_POST["cEmail"];
-    $comapnyPassword = $_POST["cPassword"];
-    if ($comapnyEmail == "") {
-        $err_cEmail = "Enter Email ";
-    } elseif ($comapnyPassword == "") {
-        $err_cPassword = "Enter a password";
-    } else {
-        $validation = "confirm";
-    }
-    if ($validation == "confirm") {
-        //for log in if (password_verify('rasmuslerdorf', $hash)) 
-        $sql = "SELECT `employer_id`,`email`, `password` FROM `employer_info` WHERE `email`='$comapnyEmail'";
-        $res = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_row($res);
-        $has_pass = $row[2];
-        $employer_id = $row[0];
-        if (password_verify($comapnyPassword, $has_pass)) {
-            setcookie("log_info", $employer_id, time() + 2 * 24 * 60 * 60);
-            header("Location:./overview.php");
-        } else {
-            echo "login failed  ";
-        }
+$access_denied = "";
+if (isset($_GET["access"])) {
+    $access_denied = "You are not authorized";
+}
+$registered = "";
+if (isset($_GET["registered"])) {
+    $registered = "Successfully Registered";
+}
+$reuired_login = "";
+if (isset($_GET["requiredLogin"])) {
+    $reuired_login = "Login to browse jobs";
+}
+$logout = "";
+if (isset($_GET["logout"])) {
+    if ($_GET["logout"] == "success") {
+        $log_error = "Successfully Loged out";
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <title>Rojgar </title>
-</head>
-
-
-<body>
-    <div class="nav-bar">
-        <div class="title">
-            <a href="../index.php" class="link">rojgar</a>
-        </div>
-        <div class="nav-bar-list">
-            <ul class="nav-list">
-                <li class="nav-items"><a href="">Explore </a></li>
-                <li class="nav-items"><a href="">Browse Jobs </a></li>
-                <li class="nav-items join-button"><a href="">Find work </a></li>
-            </ul>
-        </div>
+<?php include "base.php" ?>
+<?php if ($access_denied || $log_error || $reuired_login || $registered) { ?>
+    <div class=" center" id="msg" style="padding: 1rem; background:white;">
+        <h3>
+            <?php
+            echo $log_error;
+            echo " $access_denied ";
+            echo " $reuired_login ";
+            echo " $registered ";
+            ?>
+        </h3>
     </div>
-    <div class="row container">
+<?php } ?>
+<div class="row container-1 col" style="margin: 3rem;">
+    <div class="side-image-2">
+        <img class="image-2" src="./Images/leaves1.png">
+    </div>
+
+    <div class="form-container ">
         <h2 style="margin-bottom:0.5em ;">Log In As Employer</h2>
-        <div class="form-container ">
-            <form method="POST">
-                <div class="form-input">
-                    <label for="cEmail">Email:</label>
-                    <input <?php if ($err_cEmail) {
-                                echo 'style="border: 1px solid red;"';
-                            }
-                            ?> type="text" name="cEmail" placeholder="Enter email here.." id="cEmail" autocomplete="on">
-                    <span>
-                        <?php if ($err_cEmail) {
-                            echo "<span style='color:red;'> $err_cEmail </span>";
-                        }
-                        ?>
-                    </span><br>
-                </div>
-                <div class="form-input">
-                    <label for="cPassword">Password:</label>
-                    <input <?php if ($err_cPassword) {
-                                echo 'style="border: 1px solid red;"';
-                            }
-                            ?> type="password" name="cPassword" placeholder="Enter password here.." id="cPassword" autocomplete="off">
-                    <span>
-                        <?php
-                        echo "<span style='color:red;'> $err_cPassword </span>";
-                        ?>
-                    </span>
-                </div>
-                <div class="form-input">
-                    <a href="./register.php" class="">Register</a>
-                </div>
+        <form method="POST" action="./scripts/login.php" id="loginform">
 
-                <div class="form-input">
-                    <?php echo "$status" ?>
-                </div>
+            <div class="form-input">
+                <label for="cEmail">Email:</label>
+                <input type="text" name="cEmail" placeholder="Enter email here.." id="email" autocomplete="off">
+                <span id="email_err">
+                </span><br>
+            </div>
+            <div class="form-input">
+                <label for="cPassword">Password:</label>
+                <input type="password" name="cPassword" placeholder="Enter password here.." id="password" autocomplete="off">
+                <span id="password_err">
+                </span>
+            </div>
+            <div class="form-input">
+                Not yet a member? <a href="./register.php" class="">Create a new free employer account</a>
+            </div>
 
-                <div class="form-input">
-                    <button class="form-button" type="submit" name="login"> Login </button>
-                </div>
-            </form>
+            <div class="form-input">
+                <button class="form-button" type="submit" name="login" id="submitButton"> Login </button>
+            </div>
+        </form>
+    </div>
+</div>
+<?php include "./footer.php" ?>
+<script>
+    //to make msg disappear
+    setTimeout(fadeout, 5000);
 
-        </div>
+    function fadeout() {
+        document.getElementById("msg").style.display = "none";
+    }
+
+    const submitButton = document.getElementById("submitButton");
+    const email_err = document.getElementById("email_err");
+    const password_err = document.getElementById("password_err");
+
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        valid = validate(email, password);
+        if (valid) {
+            document.getElementById("loginform").submit();
+        }
+    })
+
+    function validate(email, password) {
+        valid = true;
+        if (!email.value) {
+            email_err.innerText = "Invalid Email";
+            email.style.border = "1px solid red";
+
+            valid = false;
+        } else {
+            email_err.innerText = "";
+        };
+        if (!password.value) {
+            password_err.innerText = "Invalid Password";
+            password.style.border = "1px solid red";
+
+            valid = false;
+        } else {
+            password_err.innerText = "";
+        };
+        return valid;
+    }
+</script>

@@ -1,4 +1,6 @@
 <?php
+$err_msg = $validation = $status = $err_cName = $err_cEmail =  $err_cPhone =  $err_cPassword = $err_confirmPassword = "";
+
 if ($comapnyName == "") {
     $err_cName = true;
 }
