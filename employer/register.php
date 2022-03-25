@@ -1,10 +1,7 @@
 <?php
-if (isset($_SESSION["employer_id"])) {
-    header("Location:./overview.php");
-}
-$status = "";
-if (isset($_GET["status"])) {
-    $status = $_GET["status"];
+session_start();
+if (isset($_SESSION['employer_id'])) {
+    header("Location:./home.php");
 }
 ?>
 <?php include "base.php" ?>
@@ -50,10 +47,6 @@ if (isset($_GET["status"])) {
 
             </div>
             <div class="form-input">
-                <?php
-                echo $status ?>
-            </div>
-            <div class="form-input">
                 <button class="form-button" type="submit" name="register" id="submitButton"> Register </button>
             </div>
         </form>
@@ -86,35 +79,31 @@ if (isset($_GET["status"])) {
         var regpassword = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,32}/;
 
         if (!name.value) {
-
             name.style.border = "1px solid red";
             valid = false;
         } else {
             name.style.border = "1px solid green";
         };
         if (!(email.value && regemail.test(email.value))) {
-
             email.style.border = "1px solid red";
             valid = false;
         } else {
             email.style.border = "1px solid green";
         };
         if (!(phone.value && regphone1.test(phone.value) && regphone2.test(phone.value))) {
-
             phone.style.border = "1px solid red";
             valid = false;
         } else {
             phone.style.border = "1px solid green";
         };
-        if (!regpassword.test(password.value)) {
-
+        if (password.value == "") {
             password.style.border = "1px solid red";
             valid = false;
-        } else {
-            password.style.border = "1px solid green";
         };
-
-        if (!(password.value == confirmPassword.value) || password.value == "" || confirmPassword.value == "") {
+        if (!regpassword.test(password.value)) {
+            password.style.border = "1px solid red";
+            valid = false;
+        } else if (!(password.value == confirmPassword.value)) {
             password.style.border = "1px solid red";
             confirmPassword.style.border = "1px solid red";
             valid = false;

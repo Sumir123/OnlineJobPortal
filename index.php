@@ -13,6 +13,12 @@
 
     <title>Rojgar </title>
 </head>
+<?php
+session_start();
+if (isset($_SESSION['employer_id'])) {
+    header("Location:./employer/home.php");
+}
+?>
 
 <body>
     <div class="bucket">
@@ -34,13 +40,13 @@
                     <li class="nav-items"> <a href="#" class="link ">Log In</a>
                         <ul>
                             <li><a href="./employer/login.php" class="link ">Employer</a></li>
-                            <li><a href="" class="link "> Job seeker </a></li>
+                            <li><a href="./freelancer/login.php" class="link "> Job seeker </a></li>
                         </ul>
                     </li>
                     <li class="nav-items"> <a href="#" class="link ">Signup</a>
                         <ul>
-                            <li><a href="./register.php" class="link ">Employer</a></li>
-                            <li><a href="" class="link "> Job seeker </a></li>
+                            <li><a href="./employer/register.php" class="link ">Employer</a></li>
+                            <li><a href="./freelancer/register.php" class="link "> Job seeker </a></li>
                         </ul>
                     </li>
             </ul>

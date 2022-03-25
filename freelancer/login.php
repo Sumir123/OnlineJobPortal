@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-if (!empty($_SESSION['employer_id'])) {
-    if (!isset($_SESSION['employer_id'])) {
+if (!empty($_SESSION['freelancer_id'])) {
+    if (!isset($_SESSION['freelancer_id'])) {
         header("Location:./login.php");
     }
 }
@@ -48,7 +48,7 @@ if (isset($_GET["logout"])) {
     </div>
 
     <div class="form-container ">
-        <h2 style="margin-bottom:0.5em ;">Log In As Employer</h2>
+        <h2 style="margin-bottom:0.5em ;">Log In As freelancer</h2>
         <form method="POST" action="./scripts/login.php" id="loginform">
 
             <div class="form-input">
@@ -64,7 +64,7 @@ if (isset($_GET["logout"])) {
                 </span>
             </div>
             <div class="form-input">
-                Not yet a member? <a href="./register.php" class="">Create a new free employer account</a>
+                Not yet a member? <a href="./register.php" class="">Create a new free freelancer account</a>
             </div>
 
             <div class="form-input">
