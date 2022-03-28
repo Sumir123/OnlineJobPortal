@@ -9,25 +9,25 @@ class Db
     }
     public function getUserInfo()
     {
-        $query = "SELECT * from  employer_info";
+        $query = "SELECT * from  freelancer_info";
         $result  = mysqli_query($this->conn, $query);
         return $result;
     }
-    public function insertUserInfo($employer_id, $name, $email, $phone, $password)
+    public function insertUserInfo($freelancer_id, $name, $email, $phone, $password)
     {
-        $query = "INSERT INTO employer_info (`employer_id` ,`name`, `email`, `phone`, `password`) VALUES ('$employer_id','$name','$email','$phone','$password')";
+        $query = "INSERT INTO freelancer_info (`freelancer_id` ,`name`, `email`, `phone`, `password`) VALUES ('$freelancer_id','$name','$email','$phone','$password')";
         $result  = mysqli_query($this->conn, $query);
         return $result;
     }
     public function getUserInfoWhereId($id)
     {
-        $query = "SELECT * from  employer_info WHERE employer_id=$id";
+        $query = "SELECT * from  freelancer_info WHERE freelancer_id=$id";
         $result  = mysqli_query($this->conn, $query);
         return $result;
     }
     public function checkUserExists($id)
     {
-        $query = "SELECT * from  employer_info  WHERE employer_id=$id";
+        $query = "SELECT * from  freelancer_info  WHERE freelancer_id=$id";
         $result  = mysqli_query($this->conn, $query);
         return $result;
     }
@@ -37,6 +37,7 @@ class Db
         $result  = mysqli_query($this->conn, $query);
         return $result;
     }
+    
     public function getProjectsWhereId($id)
     {
         $query = "SELECT * from  project_info  WHERE project_id=$id";

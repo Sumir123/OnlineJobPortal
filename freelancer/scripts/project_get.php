@@ -41,14 +41,14 @@ class projects_get
                 $location = $info[3];
                 $skills = $info[4];
                 $skill[] = explode(",", $skills);
-                $employer_id = $info[5];
+                $freelancer_id = $info[5];
                 $date = $info[6];
                 $expires_on = $info[7];
                 $cost = $info[8];
                 $date_sec = strtotime($date);
                 $date = time_ago($date_sec);
                 for ($i = 0; $i < count($skill); $i++) {
-                    $data = [$project_id, $name, $description, $location, array_slice($skill, $i), $employer_id, $date, $expires_on, $cost];
+                    $data = [$project_id, $name, $description, $location, array_slice($skill, $i), $freelancer_id, $date, $expires_on, $cost];
                 }
                 // array_slice($skill, $i)
                 array_push($array, array_slice($data, 0));

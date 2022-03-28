@@ -5,7 +5,7 @@ class session
     function check()
     {
         session_start();
-        $session = $_SESSION["employer_id"];
+        $session = $_SESSION["freelancer_id"];
         if ($session) {
             return true;
         }
@@ -16,7 +16,7 @@ class session
         session_start();
         session_unset();
         session_destroy();
-        header("Location:./login.php?logout=success");
+        header("Location:../login.php?logout=success");
     }
 }
 if (array_key_exists('signout_button', $_GET)) {

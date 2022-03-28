@@ -17,7 +17,7 @@ if ($type) {
             $location = $info[3];
             $skills = $info[4];
             $skill[] = explode(",", $skills);
-            $employer_id = $info[5];
+            $freelancer_id = $info[5];
             $date = $info[6];
             $expires_on = $info[7];
             $cost = $info[8];
@@ -28,7 +28,7 @@ if ($type) {
                 continue;
             }
 ?>
-            <div class="card-body max-59">
+            <div data-modal-target="#modal" class="card-body max-59">
                 <div class="heading card-items">
                     <h3> <?php echo $name ?></h3>
                 </div>
@@ -63,8 +63,23 @@ if ($type) {
         </div>
         </div>
         </div>
-        <?php } else {
+    <?php } else {
         echo "<p>No Jobs To Show</p>";
+    ?>
+        <div class="popup modal" id="modal">
+            <div class="popup-container">
+                <div class="back">
+                    <div data-close-button class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
+                </div>
+                <div class="popup-content" id="contents">
+
+                </div>
+            </div>
+        </div>
+        <div id="overlay">
+
+        </div>
+        <?php
     }
 } else {
     $res = $db->getProjects();
@@ -79,7 +94,7 @@ if ($type) {
             $location = $info[3];
             $skills = $info[4];
             $skill[] = explode(",", $skills);
-            $employer_id = $info[5];
+            $freelancer_id = $info[5];
             $date = $info[6];
             $expires_on = $info[7];
             $cost = $info[8];
@@ -90,7 +105,7 @@ if ($type) {
                 continue;
             }
         ?>
-            <div class="card-body max-59">
+            <div data-modal-target="#modal" class="card-body max-59">
                 <div class="heading card-items">
                     <h3> <?php echo $name ?></h3>
                 </div>
@@ -125,7 +140,22 @@ if ($type) {
         </div>
         </div>
         </div>
-<?php } else {
+    <?php } else {
         echo "<p>No Jobs To Show</p>";
     }
+    ?>
+    <div class="popup modal" id="modal">
+        <div class="popup-container">
+            <div class="back">
+                <div data-close-button class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
+            </div>
+            <div class="popup-content" id="contents">
+
+            </div>
+        </div>
+    </div>
+    <div id="overlay">
+
+    </div>
+<?php
 } ?>

@@ -21,7 +21,7 @@ if (isset($_GET["registered"])) {
 
 
 if (isset($_GET["requiredLogin"])) {
-    $err = "Login to browse jobs";
+    $err = "Login is required";
 }
 
 if (isset($_GET["logout"])) {

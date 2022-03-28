@@ -305,6 +305,10 @@ input[type="file"] {
   max-width: 59rem;
   overflow: hidden;
 }
+.max-73 {
+  max-width: 73rem;
+  overflow: hidden;
+}
 pre {
   white-space: pre-wrap;
 }
@@ -687,7 +691,88 @@ footer {
 .row {
   display: flex;
 }
+.popup {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 15%;
+  transform: scale(0);
+  transition: 350ms ease-in-out;
+  height: 100vh;
+  width: 100vw;
+  background-color: #dbdbdb;
+  padding: 1rem;
+  z-index: 10;
+  overflow: scroll;
+}
+.popup.active {
+  transform: scale(1);
+}
+.popup-container {
+  display: flex;
+  height: -webkit-fill-available;
+  flex-direction: column;
+  gap: 1rem;
+  width: 83%;
+}
+.back-button {
+  background: white;
+  padding: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+.popup-content {
+  background: white;
 
+  display: flex;
+  height: fit-content;
+}
+.content {
+  flex: 3;
+  padding: 1rem;
+  border-right: 1px solid grey;
+  text-align: left;
+}
+
+.sidebar {
+  padding: 1rem;
+  flex: 1;
+  text-align: center;
+}
+.submirButton {
+  margin-top: 1rem;
+  background-color: #1e3799;
+  border: none;
+  outline: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.submirButton:hover {
+  background-color: #021872;
+  color: white;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+#overlay.active {
+  opacity: 1;
+  pointer-events: inherit;
+}
+.mid {
+  width: 50%;
+  text-align: center;
+}
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media only screen and (max-width: 600px) {
   div ul ul {

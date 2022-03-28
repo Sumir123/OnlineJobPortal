@@ -14,7 +14,7 @@ if ($row) {
         $location = $info[3];
         $skills = $info[4];
         $skill[] = explode(",", $skills);
-        $employer_id = $info[5];
+        $freelancer_id = $info[5];
         $date = $info[6];
         $expires_on = $info[7];
         $cost = $info[8];
@@ -25,7 +25,7 @@ if ($row) {
             continue;
         }
 ?>
-        <div class="card-body max-59">
+        <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
             <div class="heading card-items">
                 <h3> <?php echo $name ?></h3>
             </div>
@@ -53,13 +53,66 @@ if ($row) {
             <div class="dim">
                 <small style="margin-right:1rem"> Expires on:<?php echo $expires_on ?></small style="">
                 <small> <i class="fas fa-map-marker-alt"></i> <?php echo $location ?> </small>
-
             </div>
+
         </div>
     <?php  } ?>
-    </div>
-    </div>
-
 <?php } else {
     echo "<p>No Jobs To Show</p>";
 } ?>
+<div class="popup modal" id="modal">
+    <div class="popup-container">
+        <div class="back">
+            <div data-close-button class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
+        </div>
+        <div class="popup-content" id="contents">
+
+        </div>
+    </div>
+</div>
+<div id="overlay">
+
+</div>
+<script>
+    const openModalbutton = document.querySelectorAll('[data-modal-target]')
+    const closeModalbutton = document.querySelectorAll('[data-close-button]')
+    const overlay = document.getElementById('overlay')
+    openModalbutton.forEach(button => {
+        button.addEventListener('click', () => {
+            id = (button.dataset.value)
+            $("#contents").load("./scripts/get_project.php", {
+                id: id
+            });
+        })
+    })
+    openModalbutton.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = document.querySelector(button.dataset.modalTarget)
+            openModal(modal)
+        })
+    })
+    closeModalbutton.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal')
+            closeModal(modal)
+        })
+    })
+    overlay.addEventListener('click', () => {
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal => {
+            closeModal(modal)
+        })
+    })
+
+    function openModal(modal) {
+        if (modal == null) return
+        modal.classList.add('active');
+        overlay.classList.add('active')
+    }
+
+    function closeModal(modal) {
+        if (modal == null) return
+        modal.classList.remove('active');
+        overlay.classList.remove('active')
+    }
+</script>

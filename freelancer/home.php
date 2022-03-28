@@ -1,7 +1,7 @@
 <?php
 include "../db_connect.php";
 session_start();
-if (!isset($_SESSION['employer_id'])) {
+if (!isset($_SESSION['freelancer_id'])) {
     header("Location:./login.php?requiredLogin='true'");
 }
 if (isset($_GET['signout'])) {
@@ -25,7 +25,7 @@ if (isset($_GET['signout'])) {
                     <h4><?php echo "<pre>" . date('l F d') . "</pre>" ?></h4>
 
                     <h1 style="font-weight:400; font-family:'Neue Montreal';">Good day,</h1>
-                    <h1 style="font-weight:300; font-family:'Neue Montreal';"><?php echo $_SESSION['employer_name'] ?></h1>
+                    <h1 style="font-weight:300; font-family:'Neue Montreal';"><?php echo $_SESSION['freelancer_name'] ?></h1>
                 </label>
                 <div class="img_wrapper row">
                     <img class="image" src="./Images/stylized2.png">
@@ -49,7 +49,7 @@ if (isset($_GET['signout'])) {
                 <img class="pp" src="./Images/pp.jpg">
             </div><br>
             <div class="center">
-                <h4 class=""><u> <?php echo $_SESSION['employer_name'] ?></u></h4>
+                <h4 class=""><u> <?php echo $_SESSION['freelancer_name'] ?></u></h4>
             </div>
         </div>
     </div>

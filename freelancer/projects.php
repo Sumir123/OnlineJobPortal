@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['employer_id'])) {
-    header("Location:../employer/login.php?requiredLogin='true'");
+if (!isset($_SESSION['freelancer_id'])) {
+    header("Location:../freelancer/login.php?requiredLogin='true'");
 }
 if (isset($_GET['signout'])) {
     setcookie('log_info', false);
@@ -62,6 +62,7 @@ if (isset($_GET['signout'])) {
 <?php include "./footer.php" ?>
 </body>
 <script>
+   
     $('select').on('change', function() {
         type = this.value;
         $("#card").load("./scripts/search.php", {

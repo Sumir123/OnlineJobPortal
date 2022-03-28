@@ -2,30 +2,30 @@
     <div class="row" style="align-items: center;">
         <div class="footer">
             <ul>
-                <li><a href="">About us</a></li>
-                <li><a href="">Feedback</a></li>
-                <li><a href=""> Community</a></li>
+                <li><a>About us</a></li>
+                <li><a>Feedback</a></li>
+                <li><a> Community</a></li>
             </ul>
         </div>
         <div class="footer">
             <ul>
-                <li><a href="">Terms of Service</a></li>
-                <li><a href="">Privacy Policy </a></li>
-                <li><a href="">Accessibility </a></li>
+                <li><a>Terms of Service</a></li>
+                <li><a>Privacy Policy </a></li>
+                <li><a>Accessibility </a></li>
             </ul>
         </div>
         <div class="footer">
             <ul>
-                <li><a href="">Terms of Service</a></li>
-                <li><a href="">Privacy Policy </a></li>
-                <li><a href="">Accessibility </a></li>
+                <li><a>Terms of Service</a></li>
+                <li><a>Privacy Policy </a></li>
+                <li><a>Accessibility </a></li>
             </ul>
         </div>
         <div class="footer">
             <ul>
-                <li><a href="">Terms of Service</a></li>
-                <li><a href="">Privacy Policy </a></li>
-                <li><a href="">Accessibility </a></li>
+                <li><a>Terms of Service</a></li>
+                <li><a>Privacy Policy </a></li>
+                <li><a>Accessibility </a></li>
             </ul>
         </div>
     </div>

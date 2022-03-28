@@ -20,7 +20,7 @@
         <nav class="nav_bar">
 
             <div class="title">
-                <?php if (isset($_SESSION['employer_id'])) { ?>
+                <?php if (isset($_SESSION['freelancer_id'])) { ?>
                     <a href="./home.php" class="link">rojgar</a>
                 <?php } else { ?>
                     <a href="../index.php" class="link">rojgar</a>
@@ -34,21 +34,20 @@
             </div>
             <ul class="nav-list">
                 <li class="nav-items "><a href="./projects.php" class="link ">Browse Jobs </a></li>
-                <?php if (isset($_SESSION['employer_id'])) { ?>
-                    <li class="nav-items "><a href="./myproject.php" class="link ">My Jobs </a></li>
-                    <li class="nav-items "><a href="./post_add.php" class="link ">Add Jobs </a></li>
+                <?php if (isset($_SESSION['freelancer_id'])) { ?>
+                    <li class="nav-items "><a href="./applied_jobs.php" class="link ">Applied Jobs </a></li>
                 <?php } ?>
-                <?php if (!isset($_SESSION['employer_id'])) { ?>
+                <?php if (!isset($_SESSION['freelancer_id'])) { ?>
                     <li class="nav-items"> <a href="#" class="link ">Log In</a>
                         <ul>
-                            <li><a href="./login.php" class="link ">Employer</a></li>
-                            <li><a href="../freelancer/login.php" class="link "> Job seeker </a></li>
+                            <li><a href="../employer/login.php" class="link ">Employer</a></li>
+                            <li><a href="../freelancer/login.php" class="link "> Freelancer</a></li>
                         </ul>
                     </li>
                     <li class="nav-items"> <a href="#" class="link ">Signup</a>
                         <ul>
-                            <li><a href="./register.php" class="link ">Employer</a></li>
-                            <li><a href="../freelancer/register.php" class="link "> Job seeker </a></li>
+                            <li><a href="../employer/register.php" class="link ">Employer</a></li>
+                            <li><a href="../freelancer/register.php" class="link ">Freelancer </a></li>
                         </ul>
                     </li>
             </ul>
@@ -59,7 +58,7 @@
                         " name="signout_button" class="a">Log Out</button></form>
                 </ul>
             <?php } ?>
-            <?php if (isset($_SESSION['employer_id'])) { ?>
+            <?php if (isset($_SESSION['freelancer_id'])) { ?>
                 <div class="nav_container">
                     <div class="icon_container"> <i class="fa-solid fa-comment"></i></div>
                 </div>
