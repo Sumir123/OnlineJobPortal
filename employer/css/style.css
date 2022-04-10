@@ -198,9 +198,13 @@ textarea {
 .form-input {
   margin-bottom: 1rem;
 }
+.black{
+  color: black;
+}
 input[type="text"],
 input[type="password"],
 input[type="number"],
+input[type="email"],
 textarea {
   width: 90%;
   padding: 0.7rem;

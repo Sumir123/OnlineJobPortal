@@ -32,6 +32,7 @@ include "base.php" ?>
                     <div class="form-input">
                         <label for="cover">Cover Letter:</label><br>
                         <textarea name="cover" rows="4" cols="50" placeholder="" style="resize: none; height:10rem;" id="cover"></textarea>
+
                     </div>
                     <div class="form-input">
                         <button class="form-button" type="submit" name="post" id="post_button"> POST </button>

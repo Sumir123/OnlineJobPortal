@@ -773,6 +773,17 @@ footer {
   width: 50%;
   text-align: center;
 }
+.black{
+  color: #222831;
+}
+.content-2{
+  background: white;
+  margin: 2rem 5rem;
+  padding: 2rem;
+}
+.mb--1{
+  margin-bottom: 1rem;
+}
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media only screen and (max-width: 600px) {
   div ul ul {

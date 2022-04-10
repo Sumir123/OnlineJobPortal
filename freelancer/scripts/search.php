@@ -31,12 +31,14 @@ if (!empty($_POST['range'])) {
 ?>
                 <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
                     <div class="heading card-items">
-                        <h3> <?php echo $name ?></h3>
+                        <a class="black" href="./projectDetails.php?p_id=<?php echo $project_id ?>">
+                            <h3> <?php echo $name ?></h3>
+                        </a>
                     </div>
 
                     <div class="card-items">
                         <div class="dim">
-                            <em style="margin-right:1rem;">Budget: <?php echo "NRS " . number_format($cost) ?> </em>
+                            <em style="margin-right:1rem;">Budget: <?php echo "NRS " . number_format($cost) ?> </em><br>
                             <small style="margin-right:1rem;">Posted: <?php echo $date ?> ago</small>
 
                         </div>
@@ -67,19 +69,6 @@ if (!empty($_POST['range'])) {
             echo "<p>No Jobs To Show</p>";
         }
         ?>
-        <div class="popup modal" id="modal">
-            <div class="popup-container">
-                <div class="back">
-                    <div data-close-button class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
-                </div>
-                <div class="popup-content" id="contents">
-
-                </div>
-            </div>
-        </div>
-        <div id="overlay">
-
-        </div>
 <?php
     }
 }

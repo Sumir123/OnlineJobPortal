@@ -11,6 +11,9 @@ $err = "";
 if (isset($_GET["login"])) {
     $err = $_GET["login"];
 }
+if (isset($_GET["err"])) {
+    $err = $_GET["err"];
+}
 if (isset($_GET["access"])) {
     $err = "You are not authorized";
 }
@@ -53,13 +56,13 @@ if (isset($_GET["logout"])) {
 
             <div class="form-input">
                 <label for="cEmail">Email:</label>
-                <input type="text" name="cEmail" placeholder="Enter email here.." id="email" autocomplete="off">
+                <input type="email" name="cEmail" placeholder="Enter email here.." id="email" autocomplete="off" require>
                 <span id="email_err">
                 </span><br>
             </div>
             <div class="form-input">
                 <label for="cPassword">Password:</label>
-                <input type="password" name="cPassword" placeholder="Enter password here.." id="password" autocomplete="off">
+                <input type="password" name="cPassword" placeholder="Enter password here.." id="password" autocomplete="off" require>
                 <span id="password_err">
                 </span>
             </div>
@@ -98,6 +101,7 @@ if (isset($_GET["logout"])) {
 
     function validate(email, password) {
         valid = true;
+
         if (!email.value) {
             email_err.innerText = "Invalid Email";
             email.style.border = "1px solid red";

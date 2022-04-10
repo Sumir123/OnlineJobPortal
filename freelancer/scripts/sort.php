@@ -66,19 +66,6 @@ if ($type) {
     <?php } else {
         echo "<p>No Jobs To Show</p>";
     ?>
-        <div class="popup modal" id="modal">
-            <div class="popup-container">
-                <div class="back">
-                    <div data-close-button class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
-                </div>
-                <div class="popup-content" id="contents">
-
-                </div>
-            </div>
-        </div>
-        <div id="overlay">
-
-        </div>
         <?php
     }
 } else {
@@ -144,18 +131,5 @@ if ($type) {
         echo "<p>No Jobs To Show</p>";
     }
     ?>
-    <div class="popup modal" id="modal">
-        <div class="popup-container">
-            <div class="back">
-                <div data-close-button class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
-            </div>
-            <div class="popup-content" id="contents">
-
-            </div>
-        </div>
-    </div>
-    <div id="overlay">
-
-    </div>
 <?php
 } ?>

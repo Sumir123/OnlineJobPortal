@@ -12,7 +12,6 @@ $res = mysqli_query($conn, $sql);
 if (mysqli_num_rows($res) == 1) {
 
     $row = mysqli_fetch_row($res);
-
     $employer_id = $row[0];
     $has_pass = $row[2];
     if (password_verify($comapnyPassword, $has_pass)) {
@@ -23,6 +22,9 @@ if (mysqli_num_rows($res) == 1) {
         header("Location:../home.php");
     } else {
         $status = mysqli_error($conn);
-        header("Location:../login.php?login=$status");
+        header("Location:../login.php?err=$status");
     }
+} else {
+    $status = "Incorrect Email or Password";
+    header("Location:../login.php?err=$status");
 }

@@ -53,7 +53,9 @@ include "./scripts/time.php";
                         <a class="icon" href="./project_update.php?id=<?php echo $project_id ?>"> <i class="fa-solid fa-pen-to-square"></i></a>
                     </div>
                     <div class="heading card-items">
-                        <h3> <?php echo $name ?></h3>
+                        <a class="black" href="./jobDetails.php?p_id=<?php echo $project_id ?>">
+                            <h3> <?php echo $name ?></h3>
+                        </a>
                     </div>
 
                     <div class="card-items">

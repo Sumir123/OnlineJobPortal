@@ -11,6 +11,9 @@ $err = "";
 if (isset($_GET["login"])) {
     $err = $_GET["login"];
 }
+if (isset($_GET["err"])) {
+    $err = $_GET["err"];
+}
 if (isset($_GET["access"])) {
     $err = "You are not authorized";
 }

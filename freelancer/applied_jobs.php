@@ -9,15 +9,22 @@ if (isset($_GET['signout'])) {
 }
 require "../db_connect.php";
 require "./scripts/time.php";
-$id = $_SESSION['freelancer_id'];
-$sql = "SELECT * from proposal where freelancer_id=$id ";
+if ($_SESSION['freelancer_id']) {
+    $id = $_SESSION['freelancer_id'];
+}
+$sql = "SELECT * from proposal where freelancer_id=$id";
 $res = mysqli_query($conn, $sql);
 $row = mysqli_fetch_all($res);
 
-$p_id = $_SESSION['project_id'];
-$p_sql = "SELECT * from project_info  where project_id=$p_id ";
-$p_res = mysqli_query($conn, $p_sql);
-$p_row = mysqli_fetch_all($p_res);
+if (!empty($_SESSION['project_id'])) {
+    if ($_SESSION['project_id']) {
+        $p_id = $_SESSION['project_id'];
+        $p_sql = "SELECT * from project_info  where project_id=$p_id ";
+        $p_res = mysqli_query($conn, $p_sql);
+        $p_row = mysqli_fetch_all($p_res);
+    }
+}
+
 ?>
 <?php include "base.php" ?>
 
@@ -51,6 +58,15 @@ $p_row = mysqli_fetch_all($p_res);
 
     </div>
 </div>
+<?php
+if (empty($_SESSION['project_id'])) {
+?>
+    <div class='card-body'>You haven't applied for any jobs
+        <a href='./projects.php'> Click here to browse job </a>
+    </div>
+<?php
+}
+?>
 <?php include "./footer.php" ?>
 </body>
 

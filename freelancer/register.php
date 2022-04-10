@@ -42,9 +42,9 @@ if (isset($_SESSION['freelancer_id'])) {
             <div class="form-input">
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" name="confirmPassword" placeholder="Confirm password" id="confirmPassword">
-
-                </span>
-
+            </div>
+            <div class="form-input">
+                Already have a account <a href="./login.php">Log in </a>
             </div>
             <div class="form-input">
                 <button class="form-button" type="submit" name="register" id="submitButton"> Register </button>

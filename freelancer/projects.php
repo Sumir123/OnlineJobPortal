@@ -11,7 +11,7 @@ if (isset($_GET['signout'])) {
 <?php include "base.php" ?>
 <script>
     $(document).ready(function() {
-        $("#card").load("./scripts/projects.php");
+        $("#card").load("./allProjects.php");
     })
 </script>
 <div class="big_container">
@@ -62,7 +62,6 @@ if (isset($_GET['signout'])) {
 <?php include "./footer.php" ?>
 </body>
 <script>
-   
     $('select').on('change', function() {
         type = this.value;
         $("#card").load("./scripts/search.php", {

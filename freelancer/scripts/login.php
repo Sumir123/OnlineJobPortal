@@ -23,6 +23,9 @@ if (mysqli_num_rows($res) == 1) {
         header("Location:../home.php");
     } else {
         $status = mysqli_error($conn);
-        header("Location:../login.php?login=$status");
+        header("Location:../login.php?err=$status");
     }
+} else {
+    $status = "Incorrect Email or Password";
+    header("Location:../login.php?err=$status");
 }

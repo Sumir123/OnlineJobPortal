@@ -11,11 +11,6 @@ if (isset($_GET['signout'])) {
 
 ?>
 <?php include "base.php" ?>
-<script>
-    $(document).ready(function() {
-        $("#card").load("./scripts/projects.php");
-    })
-</script>
 <div class="big_container">
 
     <div class="card_container">
@@ -31,16 +26,7 @@ if (isset($_GET['signout'])) {
                     <img class="image" src="./Images/stylized2.png">
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="header row center mb-1">
-                    <h2>Jobs you might like</h2>
-                </div>
-                <div class="header">
-                    <div class="card" id="card">
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="sidebar-r row">
