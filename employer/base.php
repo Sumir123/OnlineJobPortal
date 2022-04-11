@@ -33,7 +33,7 @@
                 </form>
             </div>
             <ul class="nav-list">
-              
+
                 <?php if (isset($_SESSION['employer_id'])) { ?>
                     <li class="nav-items "><a href="./myproject.php" class="link ">My Jobs </a></li>
                     <li class="nav-items "><a href="./post_add.php" class="link ">Add Jobs </a></li>

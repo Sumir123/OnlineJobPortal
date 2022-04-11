@@ -198,9 +198,7 @@ textarea {
 .form-input {
   margin-bottom: 1rem;
 }
-.black{
-  color: black;
-}
+
 input[type="text"],
 input[type="password"],
 input[type="number"],
@@ -691,7 +689,16 @@ footer {
 .row {
   display: flex;
 }
-
+.black{
+  color: black;
+}
+.wraper{
+  padding: 1rem;
+  border-bottom: 1px solid grey;
+}
+.no_pointer{
+  cursor: default !important;
+}
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media only screen and (max-width: 600px) {
   div ul ul {
