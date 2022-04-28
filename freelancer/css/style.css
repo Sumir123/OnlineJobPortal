@@ -405,6 +405,7 @@ a {
   background-image: url("../Images/clouds.jpg");
   background-size: cover;
 }
+
 .header {
   background-color: white;
   margin: 1rem auto;
@@ -435,7 +436,6 @@ a {
 }
 .pp {
   height: 100px;
-  border-radius: 50%;
 }
 .col {
   display: flex;
@@ -773,15 +773,42 @@ footer {
   width: 50%;
   text-align: center;
 }
-.black{
+.black {
   color: #222831;
 }
-.content-2{
+.content-2 {
   background: white;
   margin: 2rem 5rem;
   padding: 2rem;
 }
-.mb--1{
+.mb--1 {
+  margin-bottom: 1rem;
+}
+
+table,
+th,
+tr,
+td {
+  border: 2px solid black;
+}
+th,
+td {
+  padding: 1rem;
+}
+
+table {
+  width: -webkit-fill-available;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: white;
+}
+td {
+  overflow: hidden;
+}
+tr td a {
+  color: #9393fd;
+}
+section {
   margin-bottom: 1rem;
 }
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////// */

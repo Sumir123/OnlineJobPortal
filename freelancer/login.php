@@ -4,6 +4,8 @@ session_start();
 if (!empty($_SESSION['freelancer_id'])) {
     if (!isset($_SESSION['freelancer_id'])) {
         header("Location:./login.php");
+    } else {
+        header("Location:./home.php");
     }
 }
 
@@ -22,7 +24,6 @@ if (isset($_GET["registered"])) {
     $err = "Successfully Registered";
 }
 
-
 if (isset($_GET["requiredLogin"])) {
     $err = "Login is required";
 }
@@ -40,7 +41,6 @@ if (isset($_GET["logout"])) {
         <h3>
             <?php
             echo $err;
-
             ?>
         </h3>
     </div>

@@ -1,4 +1,7 @@
 <?php
+
+use Db as GlobalDb;
+
 class Db
 {
     var $conn;
@@ -37,7 +40,7 @@ class Db
         $result  = mysqli_query($this->conn, $query);
         return $result;
     }
-    
+
     public function getProjectsWhereId($id)
     {
         $query = "SELECT * from  project_info  WHERE project_id=$id";
@@ -89,3 +92,4 @@ class Db
         return $sql;
     }
 }
+

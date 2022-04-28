@@ -26,6 +26,9 @@ if (!empty($_GET['p_id'])) {
 <?php include "base.php" ?>
 <div class="card_container">
     <div class="card">
+        <div class="back">
+            <div onclick="history.go(-1);" class="back-button"> <i class="fa-solid fa-angle-left"></i></div>
+        </div>
         <?php if ($row) {
             $count = 0;
             foreach ($row as $info) {
@@ -92,57 +95,56 @@ if (!empty($_GET['p_id'])) {
         <div class="card-body no_pointer">
             <div>
                 <h3>Applied by:</h3>
-                <?php
-                $p_id = $_GET['p_id'];
-                $employer_id = $_SESSION['employer_id'];
-                $sql = "SELECT *   FROM `proposal` where project_id = $p_id order by date desc";
+            </div>
 
-                $res = mysqli_query($conn, $sql);
-                if ($res) {
-                    $row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+            <div class="wraper">
+                <table class="fixed">
+                    <thead>
+                        <tr>
+                            <th>Freelancer Name</th>
+                            <th>Letter</th>
+                            <th colspan="2">Actions</th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $p_id = $_GET['p_id'];
+                        $employer_id = $_SESSION['employer_id'];
+                        $sql = "SELECT *   FROM `proposal` where project_id = $p_id order by date desc";
+                        $res = mysqli_query($conn, $sql);
+                        if ($res) {
+                            $row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                            if ($row) {
+                                foreach ($row as $detail) {
+                                    $cover = $detail['cover'];
+                                    $freelancer_id = $detail['freelancer_id'];
+                                    $sql = "SELECT * FROM `freelancer_info` where freelancer_id = $freelancer_id";
+                                    $res = mysqli_query($conn, $sql);
+                                    $f_details = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                                    foreach ($f_details as $data) {
+                                        $name = $data['name'];
+                                    }
+                        ?>
+                                    <tr style="height:100px">
+                                        <td><?php echo $name ?></td>
+                                        <td height="1rem">
+                                            <pre><?php echo $cover ?></pre>
+                                        </td>
+                                        <td><a onClick="javascript: 
+                        return confirm('Are you sure you want to delete?');
+                        " href="./scripts/add_selected.php?p_id=<?php echo $project_id ?>,f_id=<?php echo $freelancer_id ?>">Select</a></td>
+                                    </tr>
 
-                    if ($row) {
-                        foreach ($row as $detail) {
-                            $project_id = $detail['project_id'];
-                            $proposal_id = $detail['proposal_id'];
-                            $cover = $detail['cover'];
-                            $freelancer_id = $detail['freelancer_id'];
-                            $date = $detail['date'];
-                            $date_sec = strtotime($date);
-                            $date = time_ago($date_sec);
-
-                            $sql = "SELECT * FROM `freelancer_info` where freelancer_id = $freelancer_id";
-                            $res = mysqli_query($conn, $sql);
-                            $f_details = mysqli_fetch_all($res, MYSQLI_ASSOC);
-                            foreach ($f_details as $data) {
-                                $name = $data['name'];
+                        <?php
+                                }
                             }
-                ?>
-                            <div class="wraper">
-                                <div class="card-items">
-                                    <h3> <?php echo $name ?></h3>
-                                </div>
-
-
-                                <div class="card-items">
-                                    <pre><?php echo $cover ?></pre>
-                                </div>
-
-                                <div class="dim">
-                                    <small style="margin-right:1rem"> Applied:<?php echo $date ?> ago</small style=""><br>
-                                </div>
-                            </div>
-                    <?php
                         }
-                    }
-                } else { ?>
-                    <div class="card-items " style="padding: 1rem;">
-                        <h4> Noone has yet applied for this job</h4>
-                    </div>
-                <?php           }
-                ?>
+
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+<?php include "footer.php" ?>

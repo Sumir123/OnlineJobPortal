@@ -129,6 +129,7 @@ nav {
   height: 80px;
 }
 .title {
+  flex: 5;
   float: left;
   padding: 0px 5rem;
   font-size: 1.5rem;
@@ -194,4 +195,7 @@ td {
 th,
 td {
   padding: 15px;
+}
+.card-items {
+  flex: 1;
 }

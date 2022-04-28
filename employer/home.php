@@ -94,7 +94,6 @@ $row = mysqli_fetch_all($res);
                                 </div>
                         <?php }
                         } ?>
-
                     </div>
                 </div>
             </div>
@@ -103,7 +102,7 @@ $row = mysqli_fetch_all($res);
     <div class="sidebar-r row">
         <div>
             <div class="pp_container">
-                <img class="pp" src="./Images/pp.jpg">
+                <img class="pp" src="./Images/pp.png">
             </div><br>
             <div class="center">
                 <h4 class=""><u> <?php echo $_SESSION['employer_name'] ?></u></h4>

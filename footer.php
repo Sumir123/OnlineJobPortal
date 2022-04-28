@@ -2,7 +2,7 @@
     <div class="row" style="align-items: center;">
         <div class="footer">
             <ul>
-                <li><a>About us</a></li>
+                <li><a href="./aboutus.php">About us</a></li>
                 <li><a>Feedback</a></li>
                 <li><a> Community</a></li>
             </ul>

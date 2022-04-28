@@ -3,7 +3,7 @@ session_start();
 include "../db_connect.php";
 
 if (!isset($_SESSION['employer_id'])) {
-    header("Location:../login.php?requiredLogin='true'");
+    header("Location:./login.php?requiredLogin='true'");
 } else {
     $location = false;
     $employer_id =  $_SESSION['employer_id'];

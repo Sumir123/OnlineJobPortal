@@ -1,7 +1,7 @@
 <?php
 $err_msg = $validation = $status = $err_cName = $err_cEmail =  $err_cPhone =  $err_cPassword = $err_confirmPassword = "";
 
-if ($comapnyName == "") {
+if ($comapnyName == "" || !preg_match("/^[a-zA-Z]+$/", $comapnyName)) {
     $err_cName = true;
 }
 if ($comapnyEmail == "" || !filter_input(INPUT_POST, "cEmail", FILTER_VALIDATE_EMAIL)) {

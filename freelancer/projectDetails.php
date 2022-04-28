@@ -1,9 +1,8 @@
 <?php
 require("./scripts/db.php");
 require("./scripts/time.php");
+require "../db_connect.php";
 $db  = new Db;
-
-
 session_start();
 if (!empty($_SESSION['freelancer_id'])) {
     if (!isset($_SESSION['freelancer_id'])) {
@@ -37,6 +36,16 @@ if ($row) {
 
         $date_sec = strtotime($date);
         $date = time_ago($date_sec);
+        $selected = false;
+        $sql = "SELECT project_id from selected_freelancers";
+        $res = mysqli_query($conn, $sql);
+        $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+        foreach ($p_id_row as $p_id) {
+            $p_id = $p_id["project_id"];
+        }
+        if ($p_id == $project_id) {
+            $selected = true;
+        }
         include "./base.php";
 ?>
 
@@ -80,19 +89,21 @@ if ($row) {
 
                     </div>
                     <div class="sidebar">
-                        <div class="mb--1">
-                            <a href="./proposal.php?id=
+                        <?php if (!$selected) { ?>
+                            <div class="mb--1">
+                                <a href="./proposal.php?id=
                                     <?php
-
                                     $_SESSION['project_id'] = $project_id; ?>
                                     " class="submirButton">Submit a Proposal</a>
+                            </div>
+                            <hr>
+                            <div>
+                                About the client:
+                            </div>
+                        <?php } else {      ?>
 
-                        </div>
-                        <hr>
-
-                        <div>
-                            About the client:
-                        </div>
+                            <div class="mb--1" style="font-size: 1.2rem;color:red;;">Already selected</div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

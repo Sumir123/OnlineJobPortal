@@ -9,6 +9,14 @@
     <title>Dashboard</title>
 </head>
 <?php
+session_start();
+if (!empty($_SESSION['admin_id'])) {
+    if (!isset($_SESSION['admin_id'])) {
+        header("Location:../index.php");
+    }
+}
+?>
+<?php
 
 require("./db.php");
 $count = 1;
@@ -21,7 +29,11 @@ $row = mysqli_fetch_all($projects_info, MYSQLI_ASSOC);
     <div class="container">
         <nav class="nav_bar">
             <div class="title">
-                <a href="./home.php" class="link">rojgar</a>
+                <a href="./dashboard.php" class="link">rojgar</a>
+            </div>
+            <div class="card-items">
+                <a href="./logout.php" onClick="javascript:return confirm('Are you sure you want to logout?');">
+                    Logout</a>
             </div>
         </nav>
     </div>

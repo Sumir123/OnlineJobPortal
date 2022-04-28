@@ -19,7 +19,7 @@ if (isset($_SESSION['freelancer_id'])) {
             <div class="form-input">
                 <label for="Name">freelancer Name(Display name):</label>
                 <input type="text" name="cName" placeholder="Enter the name of freelancer" id="Name" autocomplete="off">
-
+                <small style="color: grey;">Characters only</small>
             </div>
             <div class="form-input">
                 <label for="Email">Email:</label><br>
@@ -73,12 +73,13 @@ if (isset($_SESSION['freelancer_id'])) {
 
     function validate(name, email, phone, password, confirmPassword) {
         valid = true;
+        var regxname = /^[a-z A-Z]+$/;
         var regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         var regphone1 = /^[0-9]/;
         var regphone2 = /^98[0-9]{8}$/;
         var regpassword = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,32}/;
 
-        if (!name.value) {
+        if (!(name.value && regxname.test(name.value))) {
             name.style.border = "1px solid red";
             valid = false;
         } else {

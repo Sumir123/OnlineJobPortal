@@ -17,32 +17,32 @@ if (!isset($_SESSION['employer_id'])) {
                 <div class="form-input">
                     <label for="pName" class="label">Name for your project:</label>
                     <input type="text" name="pName" placeholder="Enter the project name" id="pName" autocomplete="off">
-                    <span id="pName_err">
+                    <br> <span id="pName_err">
                     </span><br>
                 </div>
                 <div class="form-input">
                     <label for="pDesc">Project Description:</label><br>
                     <textarea name="pDesc" rows="4" cols="50" placeholder="Tell us more about your project" style="resize: none;" id="pDesc"></textarea>
-                    <span id="pDesc_err">
+                    <br> <span id="pDesc_err">
                     </span><br>
                 </div>
                 <div class="form-input">
                     <label for="pLocation"> Project location:</label>
                     <input type="text" name="pLocation" placeholder="Enter the project location" id="pLocation" autocomplete="off">
-                    <span id="pLocation_err">
+                    <br> <span id="pLocation_err">
                     </span><br>
                 </div>
                 <div class="form-input">
                     <label for="skills"> Skills:</label>
                     <small> use comma(,) to seperate different skills</small>
                     <input type="text" name="skills" placeholder="Enter the essential skills you are looking for" id="skills" autocomplete="off">
-                    <span id="skills_err">
+                    <br> <span id="skills_err">
                     </span><br>
                 </div>
                 <div class="form-input">
-                    <label for="cost"> Cost(NRP):</label>
+                    <label for="cost"> Budget(NRP):</label>
                     <input type="number" name="cost" placeholder="Enter the price you are willing to pay" id="cost" autocomplete="off">
-                    <span id="cost_err">
+                    <br> <span id="cost_err">
                     </span><br>
                 </div>
                 <div class="form-input">

@@ -14,7 +14,6 @@
     <title>Rojgar </title>
 </head>
 
-
 <body>
     <div class="bucket">
         <nav class="nav_bar">
@@ -35,15 +34,16 @@
                 <li class="nav-items"> <a href="#" class="link ">Log In</a>
                     <ul>
                         <li><a href="./employer/login.php" class="link ">Employer</a></li>
-                        <li><a href="./freelancer/login.php" class="link "> Job seeker </a></li>
+                        <li><a href="./freelancer/login.php" class="link "> Freeelancer</a></li>
                     </ul>
                 </li>
                 <li class="nav-items"> <a href="#" class="link ">Signup</a>
                     <ul>
                         <li><a href="./employer/register.php" class="link ">Employer</a></li>
-                        <li><a href="./freelancer/register.php" class="link "> Job seeker </a></li>
+                        <li><a href="./freelancer/register.php" class="link "> Freeelancer </a></li>
                     </ul>
                 </li>
+                <li class="nav-items "><a href="./aboutus.php" class="link ">About us </a></li>
             </ul>
         </nav>
     </div>

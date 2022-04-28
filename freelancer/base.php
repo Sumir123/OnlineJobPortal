@@ -67,7 +67,7 @@
                     <div class="icon_container"> <i class="fa-solid fa-bell"></i></div>
                 </div>
                 <div class="nav_container">
-                    <a href="./overview.php"> <img class="image_round" src="./Images/pp.jpg"></a>
+                    <a href="./overview.php"> <img class="image_round" src="./Images/pp.png"></a>
                 </div>
             <?php } ?>
         </nav>

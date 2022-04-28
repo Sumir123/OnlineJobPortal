@@ -43,10 +43,10 @@ if (isset($_GET['signout'])) {
             </div>
         </div>
     </div>
-    <div class="sidebar-r row">
+    <div class="sidebar-r row cover2">
         <div>
             <div class="pp_container">
-                <img class="pp" src="./Images/pp.jpg">
+                <img class="pp" src="./Images/pp.png">
             </div><br>
             <div class="center">
                 <h4 class=""><u> <?php echo $_SESSION['freelancer_name'] ?></u></h4>

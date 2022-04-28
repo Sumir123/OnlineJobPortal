@@ -1,13 +1,17 @@
 <?php
 require("./scripts/db.php");
+require("../db_connect.php");
+
 require("./scripts/time.php");
 $db  = new Db;
 $res = $db->getProjects();
 $row = mysqli_fetch_all($res);
 
 if ($row) {
+
     $count = 0;
     foreach ($row as $info) {
+        $selected = false;
         $project_id = $info[0];
         $name = $info[1];
         $description = $info[2];
@@ -24,11 +28,22 @@ if ($row) {
         if ($name == "" || $description == "" || $location == "" || $skills == "") {
             continue;
         }
+        $sql = "SELECT project_id from selected_freelancers";
+        $res = mysqli_query($conn, $sql);
+        $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+        foreach ($p_id_row as $p_id) {
+            $p_id = $p_id["project_id"];
+        }
+        if ($p_id == $project_id) {
+            $selected = true;
+        }
 ?>
         <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
             <div class="heading card-items">
                 <a class="black" href="./projectDetails.php?p_id=<?php echo $project_id ?>">
-                    <h3> <?php echo $name ?></h3>
+                    <h3> <?php echo $name ?> <?php if ($selected) {
+                                                    echo "<div style='color:red;'>Selected<div>";
+                                                } ?></h3>
                 </a>
             </div>
             <div class="card-items">
