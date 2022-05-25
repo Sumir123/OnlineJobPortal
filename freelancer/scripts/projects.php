@@ -1,6 +1,7 @@
 <?php
 require("db.php");
 require("time.php");
+include "../db_connect.php";
 $db  = new Db;
 $res = $db->getProjects();
 $row = mysqli_fetch_all($res);
@@ -8,6 +9,8 @@ $row = mysqli_fetch_all($res);
 if ($row) {
     $count = 0;
     foreach ($row as $info) {
+        $selected = false;
+
         $project_id = $info[0];
         $name = $info[1];
         $description = $info[2];
@@ -24,12 +27,26 @@ if ($row) {
         if ($name == "" || $description == "" || $location == "" || $skills == "") {
             continue;
         }
+        $sql = "SELECT project_id from selected_freelancers";
+        $res = mysqli_query($conn, $sql);
+        $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+        if ($p_id_row) {
+            foreach ($p_id_row as $p_id) {
+                $p_id = $p_id["project_id"];
+
+                if ($p_id == $project_id) {
+                    $selected = true;
+                    break;
+                }
+            }
+        }
 ?>
         <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
             <div class="heading card-items">
-                <h3> <?php echo $name ?></h3>
+                <h3> <?php echo $name ?> <?php if ($selected) {
+                                                echo "<div style='color:red;'>Hired<div>";
+                                            } ?></h3>
             </div>
-
             <div class="card-items">
                 <div class="dim">
                     <em style="margin-right:1rem;">Budget: <?php echo "NRS " . number_format($cost) ?> </em>

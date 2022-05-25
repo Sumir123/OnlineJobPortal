@@ -1,6 +1,7 @@
 <?php
 require("db.php");
 include "./time.php";
+include "../db_connect.php";
 
 $db = new Db;
 if (!empty($_POST['range'])) {
@@ -12,6 +13,7 @@ if (!empty($_POST['range'])) {
         if ($row) {
             $count = 0;
             foreach ($row as $info) {
+                $selected = false;
                 $project_id = $info[0];
                 $name = $info[1];
                 $description = $info[2];
@@ -28,23 +30,39 @@ if (!empty($_POST['range'])) {
                 if ($name == "" || $description == "" || $location == "" || $skills == "") {
                     continue;
                 }
-?>
-                <div class="card-body max-59">
-                    <div class="heading card-items">
-                        <h3> <?php echo $name ?></h3>
-                    </div>
+                $sql = "SELECT project_id from selected_freelancers";
+                $res = mysqli_query($conn, $sql);
+                $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                if ($p_id_row) {
+                    foreach ($p_id_row as $p_id) {
+                        $p_id = $p_id["project_id"];
 
+                        if ($p_id == $project_id) {
+                            $selected = true;
+                            break;
+                        }
+                    }
+                }
+?>
+                <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
+                    <div class="heading card-items">
+                        <a class="black" href="./projectDetails.php?p_id=<?php echo $project_id ?>">
+                            <h3> <?php echo $name ?> <?php if ($selected) {
+                                                            echo "<div style='color:red;'>Selected<div>";
+                                                        } ?></h3>
+                        </a>
+                    </div>
                     <div class="card-items">
                         <div class="dim">
                             <em style="margin-right:1rem;">Budget: <?php echo "NRS " . number_format($cost) ?> </em>
-                            <small style="margin-right:1rem;">Posted: <?php echo $date ?> ago</small>
-
+                            <br> <small style="margin-right:1rem;">Posted: <?php echo $date ?> ago</small>
                         </div>
                     </div>
                     <div class="card-items">
-                        <pre>  <?php echo $description ?> </pre>
+                        <pre><?php echo $description ?></pre>
                     </div>
                     <div class="card-items text" id="text">
+
                         <?php
                         foreach ($skill[$count] as $skillz) {
                             if (!$skillz == "") {
@@ -57,13 +75,11 @@ if (!empty($_POST['range'])) {
                     <div class="dim">
                         <small style="margin-right:1rem"> Expires on:<?php echo $expires_on ?></small style="">
                         <small> <i class="fas fa-map-marker-alt"></i> <?php echo $location ?> </small>
-
                     </div>
+
                 </div>
-            <?php  } ?>
-            </div>
-            </div>
-            </div>
+            <?php  }
+            ?>
             <?php } else {
             echo "<p>No Jobs To Show</p>";
         }
@@ -76,8 +92,11 @@ if (!empty($_POST['type'])) {
         $res = $db->getProjectsAccToDate($type);
         $row = mysqli_fetch_all($res);
         if ($row) {
+
             $count = 0;
             foreach ($row as $info) {
+                $selected = false;
+
                 $project_id = $info[0];
                 $name = $info[1];
                 $description = $info[2];
@@ -94,23 +113,37 @@ if (!empty($_POST['type'])) {
                 if ($name == "" || $description == "" || $location == "" || $skills == "") {
                     continue;
                 }
+                $sql = "SELECT project_id from selected_freelancers";
+                $res = mysqli_query($conn, $sql);
+                $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                if ($p_id_row) {
+                    foreach ($p_id_row as $p_id) {
+                        $p_id = $p_id["project_id"];
+                        if ($p_id == $project_id) {
+                            $selected = true;
+                        }
+                    }
+                }
             ?>
-                <div class="card-body max-59">
+                <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
                     <div class="heading card-items">
-                        <h3> <?php echo $name ?></h3>
+                        <a class="black" href="./projectDetails.php?p_id=<?php echo $project_id ?>">
+                            <h3> <?php echo $name ?> <?php if ($selected) {
+                                                            echo "<div style='color:red;'>Selected<div>";
+                                                        } ?></h3>
+                        </a>
                     </div>
-
                     <div class="card-items">
                         <div class="dim">
                             <em style="margin-right:1rem;">Budget: <?php echo "NRS " . number_format($cost) ?> </em>
-                            <small style="margin-right:1rem;">Posted: <?php echo $date ?> ago</small>
-
+                            <br> <small style="margin-right:1rem;">Posted: <?php echo $date ?> ago</small>
                         </div>
                     </div>
                     <div class="card-items">
-                        <pre>  <?php echo $description ?> </pre>
+                        <pre><?php echo $description ?></pre>
                     </div>
                     <div class="card-items text" id="text">
+
                         <?php
                         foreach ($skill[$count] as $skillz) {
                             if (!$skillz == "") {
@@ -123,15 +156,13 @@ if (!empty($_POST['type'])) {
                     <div class="dim">
                         <small style="margin-right:1rem"> Expires on:<?php echo $expires_on ?></small style="">
                         <small> <i class="fas fa-map-marker-alt"></i> <?php echo $location ?> </small>
-
                     </div>
+
                 </div>
-            <?php  } ?>
-            </div>
-            </div>
-            </div>
+            <?php  }
+            ?>
 <?php } else {
             echo "<p>No Jobs To Show</p>";
         }
     }
-}
+} ?>

@@ -2,27 +2,38 @@
 session_start();
 include "../db_connect.php";
 
-if (!isset($_SESSION['freelancer_id'])) {
-    header("Location:../login.php?requiredLogin='true'");
+if (!empty($_GET['freelancer_id'])) {
+    if (isset($_GET['freelancer_id'])) {
+        $freelancer_id = $_GET["freelancer_id"];
+    }
+} else if (!empty($_GET['freelancer_id'])) {
+    if (!isset($_SESSION['freelancer_id'])) {
+        header("Location:../login.php?requiredLogin='true'");
+    }
 } else {
-    $location = false;
     $freelancer_id =  $_SESSION['freelancer_id'];
-    $sql = "SELECT * FROM `freelancer_info` WHERE `freelancer_id`='$freelancer_id'";
-    $res = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_row($res);
-    $name = $row[1];
-    $email = $row[2];
-    $phone = $row[3];
-    $phone = $row[3];
+}
+
+$location = false;
+
+$sql = "SELECT * FROM `freelancer_info` WHERE `freelancer_id`='$freelancer_id'";
+$res = mysqli_query($conn, $sql);
+$rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
+foreach ($rows as $row) {
+    $name = $row['name'];
+    $email = $row['email'];
+    $phone = $row['phone'];
 }
 ?>
 <?php include "base.php" ?>
 <div class="can">
-
+    <div class="back">
+        <div onclick="history.go(-1);" class="back-button"> <i class="fa-solid fa-angle-left"></i>&nbsp; Back</div>
+    </div>
     <div class="container-5">
 
         <div class="row center flex1">
-            <img class="image_round big" src="./Images/pp.jpg">
+            <img class="image_round big" src="./Images/pp.png">
         </div>
         <div class="flex4">
             <h2>
@@ -30,10 +41,18 @@ if (!isset($_SESSION['freelancer_id'])) {
             </h2>
             <div>
                 <i class="fas fa-map-marker-alt"></i>
-                <?php if ($location) {
-                    echo $location;
-                }
+                <?php
                 echo "City,Country";
+                ?>
+                <br>
+                <i class="fa-solid fa-envelope"></i>
+                <?php
+                echo $email;
+                ?>
+                <br>
+                <i class="fa-solid fa-phone"></i>
+                <?php
+                echo $phone;
                 ?>
             </div>
         </div>

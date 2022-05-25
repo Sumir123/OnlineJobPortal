@@ -116,6 +116,7 @@ if (!empty($_GET['p_id'])) {
                             $row = mysqli_fetch_all($res, MYSQLI_ASSOC);
                             if ($row) {
                                 foreach ($row as $detail) {
+                                    $status = false;
                                     $cover = $detail['cover'];
                                     $freelancer_id = $detail['freelancer_id'];
                                     $sql = "SELECT * FROM `freelancer_info` where freelancer_id = $freelancer_id";
@@ -124,17 +125,36 @@ if (!empty($_GET['p_id'])) {
                                     foreach ($f_details as $data) {
                                         $name = $data['name'];
                                     }
+                                    $sql = "SELECT project_id from selected_freelancers";
+                                    $res = mysqli_query($conn, $sql);
+                                    $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                                    foreach ($p_id_row as $p_id) {
+                                        $p_id = $p_id["project_id"];
+                                        if ($p_id == $project_id) {
+                                            $status = true;
+                                            break;
+                                        }
+                                    }
+
                         ?>
                                     <tr style="height:100px">
-                                        <td><?php echo $name ?></td>
+                                        <td> <a href="../freelancer/overview.php?freelancer_id=<?php echo "$freelancer_id" ?>"> <?php echo $name ?></a></td>
                                         <td height="1rem">
                                             <pre><?php echo $cover ?></pre>
                                         </td>
-                                        <td><a onClick="javascript: 
-                        return confirm('Are you sure you want to delete?');
-                        " href="./scripts/add_selected.php?p_id=<?php echo $project_id ?>,f_id=<?php echo $freelancer_id ?>">Select</a></td>
+                                        <?php if (!$status) { ?>
+                                            <td>
+                                                <a onClick="javascript: 
+                                                   return confirm('Select this freelancer?');
+                                                    " href="./scripts/add_selected.php?p_id=<?php echo $project_id ?>&f_id=<?php echo $freelancer_id ?>">
+                                                    Select</a>
+                                            </td>
+                                        <?php } else { ?>
+                                            <td>
+                                                <div style="color: red;"> Hired</div>
+                                            </td>
+                                        <?php } ?>
                                     </tr>
-
                         <?php
                                 }
                             }

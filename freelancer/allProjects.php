@@ -31,11 +31,15 @@ if ($row) {
         $sql = "SELECT project_id from selected_freelancers";
         $res = mysqli_query($conn, $sql);
         $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
-        foreach ($p_id_row as $p_id) {
-            $p_id = $p_id["project_id"];
-        }
-        if ($p_id == $project_id) {
-            $selected = true;
+        if ($p_id_row) {
+            foreach ($p_id_row as $p_id) {
+                $p_id = $p_id["project_id"];
+
+                if ($p_id == $project_id) {
+                    $selected = true;
+                    break;
+                }
+            }
         }
 ?>
         <div data-modal-target="#modal" class="card-body max-73" data-value="<?php echo "$project_id" ?>">
@@ -72,7 +76,8 @@ if ($row) {
             </div>
 
         </div>
-    <?php  } ?>
+    <?php  }
+    ?>
 <?php } else {
     echo "<p>No Jobs To Show</p>";
 } ?>

@@ -22,7 +22,7 @@ if (!isset($_SESSION['employer_id'])) {
     <div class="container-5">
 
         <div class="row center flex1">
-            <img class="image_round big" src="./Images/pp.jpg">
+            <img class="image_round big" src="./Images/pp.png">
         </div>
         <div class="flex4">
             <h2>

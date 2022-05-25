@@ -40,11 +40,13 @@ if ($row) {
         $sql = "SELECT project_id from selected_freelancers";
         $res = mysqli_query($conn, $sql);
         $p_id_row = mysqli_fetch_all($res, MYSQLI_ASSOC);
-        foreach ($p_id_row as $p_id) {
-            $p_id = $p_id["project_id"];
-        }
-        if ($p_id == $project_id) {
-            $selected = true;
+        if ($p_id_row) {
+            foreach ($p_id_row as $p_id) {
+                $p_id = $p_id["project_id"];
+            }
+            if ($p_id == $project_id) {
+                $selected = true;
+            }
         }
         include "./base.php";
 ?>
@@ -100,8 +102,7 @@ if ($row) {
                             <div>
                                 About the client:
                             </div>
-                        <?php } else {      ?>
-
+                        <?php } else { ?>
                             <div class="mb--1" style="font-size: 1.2rem;color:red;;">Already selected</div>
                         <?php } ?>
                     </div>

@@ -73,11 +73,11 @@
             </div>
             <?php if (isset($_SESSION['employer_id'])) { ?>
                 <div class="nav_container">
-                    <a href="./overview.php"> <img class="image_round" src="./employer/Images/pp.png"></a>
+                    <a href="./employer/overview.php"> <img class="image_round" src="./employer/Images/pp.png"></a>
                 </div>
             <?php } elseif (isset($_SESSION['freelancer_id'])) { ?>
                 <div class="nav_container">
-                    <a href="./overview.php"> <img class="image_round" src="./freelancer/Images/pp.png"></a>
+                    <a href="./freelancer/overview.php"> <img class="image_round" src="./freelancer/Images/pp.png"></a>
                 </div>
             <?php } ?>
         </nav>

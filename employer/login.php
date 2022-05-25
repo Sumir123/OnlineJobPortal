@@ -2,8 +2,8 @@
 
 session_start();
 if (!empty($_SESSION['employer_id'])) {
-    if (!isset($_SESSION['employer_id'])) {
-        header("Location:./login.php");
+    if (isset($_SESSION['employer_id'])) {
+        header("Location:./home.php");
     }
 }
 
